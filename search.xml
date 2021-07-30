@@ -8,7 +8,7 @@
       <link href="/2021/07/28/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
       <url>/2021/07/28/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
       
-        <content type="html"><![CDATA[<h1 id="你好-世界！"><a href="#你好-世界！" class="headerlink" title="你好 世界！"></a>你好 世界！</h1><p>这是我的第一段代码</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'Hello World!'</span>)</span><br></pre></td></tr></tbody></table></figure>]]></content>
+        <content type="html"><![CDATA[<h1>你好 世界！</h1><p>这是我的第一段代码</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'Hello World!'</span>,<span class="string">'你好 世界！'</span>)</span><br></pre></td></tr></tbody></table></figure>]]></content>
       
       
       
