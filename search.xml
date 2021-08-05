@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>前端面试之CSS</title>
+      <link href="/2021/08/05/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E4%B9%8BCSS/"/>
+      <url>/2021/08/05/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E4%B9%8BCSS/</url>
+      
+        <content type="html"><![CDATA[<h1>前端面试之 CSS</h1><h3 id="第一题：CSS-伪类与伪元素的区别">第一题：CSS 伪类与伪元素的区别</h3><ul><li><p>伪类</p><p>利用伪类可以<strong>为文档中不一定真实存在的结构指定样式，或者为某些元素（甚至文档本身）的特定状态赋予幽灵类</strong></p><p>由于状态的变化是⾮静态的，所以元素达到⼀个特定状态时，它可能得到⼀个伪类的样式；当状态改变时，它⼜会失去这个样式</p><p>由此可以看出，它的功能和class有些类似，但它是<strong>基于⽂档之外的抽象</strong>，所以叫 伪类</p></li><li><p>伪元素</p><p>顾名思义就是 <strong>DOM 树中没有定义的虚拟元素</strong></p><p>核心就是需要创建通常不存在于文档中的元素</p><p>⽐如::before ::after 它选择的是元素指定内容，表示选择元素内容的之前内容或之后内容</p><p>伪元素控制的内容和元素是没有差别的，但是它本身只是<strong>基于元素的抽象</strong>，并不存在于⽂档中，所以称为伪元素。⽤于将特殊的效果添加到某些选择器</p></li><li><p>伪类与伪元素的区别</p><p>表示不同：伪类以 : 开头，伪元素以 :: 开头</p><p>定义不同：伪类即假的类，可以添加类达到效果；伪元素即假元素，需要通过添加元素才能达到效果</p></li></ul><h3 id="第二题：说一下盒模型，以及标准模型和-IE-模型">第二题：说一下盒模型，以及标准模型和 IE 模型</h3><ul><li><p>什么是盒模型</p><p>盒模型是 css 中一种非常基础的设计模式，<strong>web 页面中每一个元素都可以当作一个盒模型</strong>，每一个盒模型都是由 display、position、float、width、height、padding、border、margin 等属性组合构成。<strong>不同类型的盒模型在页面布局上及表现上都不同</strong>。css 中主要有 inline、inline-block、block、absolute position、float 等类型</p></li><li><p>W3C 标准模型和 IE 传统模型</p><p>标准模型： height / width（空间高度 / 宽度）= 内容高度 / 宽度 + 内边距 + 边框宽度 + 外边距 【height / width 为 内容高度 / 宽度】</p><p>IE 模型： height / width （空间高度 / 宽度） =  内容高度 / 宽度 + 外边距【height / width 包含了 内容高度 / 宽度、边框宽度、内边距】</p></li><li><p>CSS 如何设置标准模型和 IE 模型</p><p><strong>利用 box-sizing 属性</strong>： content-box 为标准模型；border-box 为 IE 模型</p></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 前端面试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>我的第一篇博客</title>
       <link href="/2021/07/28/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
       <url>/2021/07/28/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
