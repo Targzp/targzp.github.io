@@ -1,25 +1,288 @@
 <!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>前端面试之CSS</title><meta name="description" content="I think,therefore I am"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/null"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="
-第一题：CSS 伪类与伪元素的区别
 
+前端面试系列主要是针对前端各个技术面试时常见的面试问题和知识点的整理。属于面试向的博文，所以较为零碎和不全面，请悉知
 
-伪类
-利用伪类可以为文档中不一定真实存在的结构指定样式，或者为某些元素（甚至文档本身）的特定状态赋予幽灵类
-由于状态的变化是⾮静态的，所以元素达到⼀个特定状态时，它可能得到⼀个伪类的样式；当状态改变时，它⼜会失去这个样式
-由此可以看出，它的功能和class有些类似，但它是基于⽂档之外的抽象，所以叫 伪类
+首先我们可以看一下 CSS 面试题的知识模块
 
+CSS 知识点梳理
+第一部分：布局
+盒模型宽度计算
+先看例题
 
-伪元素
-顾名思义就是 DOM 树中没有定义的虚拟元素
-核心就是需要创建通常不存在于文档中的元素
-⽐如::before ::after 它选择的是元素指定内容，表示选择元素内容的之前内容或之后内容
-伪元素控制的内容和元素是没有差别的，但是它本身只是基于元素的抽象，并不存在于⽂档中，所以称为伪元素。⽤于将特殊的效果添加到某些选择器
+首先，什么是 offsetWidth？ offsetWidth = (内容宽度 + 内边距 + 边框) 无外边距。因此上面的答案是 122 px
+那么如果让 offsetWidth 等于 100px，该如何去做呢？上面的 width 默认设定的是内容宽度。我们可以使用 box-sizing 属性去改变这个默认设定
 
-
-伪类与伪元素的区别
-表示不同：.."><meta name="generator" content="Hexo 5.4.0">
+我们把 box-sizing 的值设为 border-box，让 width 设定的宽度为 到边框外边界的 宽度，这样这里的内容宽度就会自动去计算。offsetW.."><meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Lawrence's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">前端面试之CSS</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%9ACSS-%E4%BC%AA%E7%B1%BB%E4%B8%8E%E4%BC%AA%E5%85%83%E7%B4%A0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">第一题：CSS 伪类与伪元素的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%9A%E8%AF%B4%E4%B8%80%E4%B8%8B%E7%9B%92%E6%A8%A1%E5%9E%8B%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%A0%87%E5%87%86%E6%A8%A1%E5%9E%8B%E5%92%8C-IE-%E6%A8%A1%E5%9E%8B"><span class="toc-text">第二题：说一下盒模型，以及标准模型和 IE 模型</span></a></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95"><i class="tag post-item-tag">前端面试</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">前端面试之CSS</h1><time class="has-text-grey" datetime="2021-08-05T03:23:53.000Z">2021-08-05</time><article class="mt-2 post-content"><p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/css.jpg" alt="css"></p>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Lawrence's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">前端面试之CSS</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86"><span class="toc-text">CSS 知识点梳理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E5%B8%83%E5%B1%80"><span class="toc-text">第一部分：布局</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%92%E6%A8%A1%E5%9E%8B%E5%AE%BD%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="toc-text">盒模型宽度计算</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#margin-%E7%BA%B5%E5%90%91%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98"><span class="toc-text">margin 纵向重叠问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#margin-%E8%B4%9F%E5%80%BC%E9%97%AE%E9%A2%98"><span class="toc-text">margin 负值问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#BFC-%E7%90%86%E8%A7%A3%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="toc-text">BFC 理解与应用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#float-%E5%B8%83%E5%B1%80"><span class="toc-text">float 布局</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%8B%E5%86%99-clearfix"><span class="toc-text">手写 clearfix</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#flex-%E5%B8%83%E5%B1%80"><span class="toc-text">flex 布局</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-%E9%A2%98%E7%9B%AE%E6%95%B4%E7%90%86"><span class="toc-text">CSS 题目整理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%9ACSS-%E4%BC%AA%E7%B1%BB%E4%B8%8E%E4%BC%AA%E5%85%83%E7%B4%A0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">第一题：CSS 伪类与伪元素的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%9A%E8%AF%B4%E4%B8%80%E4%B8%8B%E7%9B%92%E6%A8%A1%E5%9E%8B%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%A0%87%E5%87%86%E6%A8%A1%E5%9E%8B%E5%92%8C-IE-%E6%A8%A1%E5%9E%8B"><span class="toc-text">第二题：说一下盒模型，以及标准模型和 IE 模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%A2%98%EF%BC%9A-BFC-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E8%A7%A6%E5%8F%91-BFC-%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="toc-text">第三题： BFC 是什么？触发 BFC 的条件是什么？有哪些应用场景？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%A2%98%EF%BC%9A%E8%AF%B4%E4%B8%80%E4%B8%8B%E4%BB%80%E4%B9%88%E6%98%AF%E9%87%8D%E7%BB%98%E9%87%8D%E6%8E%92%EF%BC%8C%E5%93%AA%E4%BA%9B%E6%93%8D%E4%BD%9C%E4%BC%9A%E9%80%A0%E6%88%90%E9%87%8D%E7%BB%98%E9%87%8D%E6%8E%92"><span class="toc-text">第四题：说一下什么是重绘重排，哪些操作会造成重绘重排</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E9%A2%98%EF%BC%9A%E4%BD%BF%E7%94%A8-CSS-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%B0%B4%E6%B3%A2%E7%BA%B9%E7%9A%84%E6%95%88%E6%9E%9C"><span class="toc-text">第五题：使用 CSS 实现一个水波纹的效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E9%A2%98%EF%BC%9Aposition-%E5%AE%9A%E4%BD%8D%E9%83%BD%E6%9C%89%E4%BB%80%E4%B9%88%E5%B1%9E%E6%80%A7%EF%BC%88%E4%B8%8D%E4%BB%85%E4%BB%85%E6%98%AF%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E5%92%8C%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8D-fix-%E5%AE%9A%E4%BD%8D%EF%BC%89"><span class="toc-text">第六题：position 定位都有什么属性（不仅仅是绝对定位和相对定位&#x2F; fix 定位）</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%20CSS"><i class="tag post-item-tag">前端面试 CSS</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">前端面试之CSS</h1><time class="has-text-grey" datetime="2021-08-05T03:23:53.000Z">2021-08-05</time><article class="mt-2 post-content"><p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/css.jpg" alt="css"></p>
+<blockquote>
+<p>前端面试系列主要是针对前端各个技术面试时常见的面试问题和知识点的整理。属于面试向的博文，所以较为零碎和不全面，请悉知</p>
+</blockquote>
+<p><strong>首先我们可以看一下 CSS 面试题的知识模块</strong></p>
+<p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210808112454023.png" alt="image-20210808112454023"></p>
+<h3 id="CSS-知识点梳理">CSS 知识点梳理</h3>
+<h4 id="第一部分：布局">第一部分：布局</h4>
+<h5 id="盒模型宽度计算"><strong>盒模型宽度计算</strong></h5>
+<p>先看例题</p>
+<p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210809114616843.png" alt="image-20210809114616843"></p>
+<p>首先，什么是 offsetWidth？ <strong>offsetWidth = (内容宽度 + 内边距 + 边框) 无外边距</strong>。因此上面的答案是 122 px</p>
+<p>那么如果让 offsetWidth 等于 100px，该如何去做呢？上面的 width 默认设定的是内容宽度。我们可以使用 box-sizing 属性去改变这个默认设定</p>
+<p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210809115044825.png" alt="image-20210809115044825"></p>
+<p>我们把 box-sizing 的值设为 border-box，<strong>让 width 设定的宽度为 到边框外边界的 宽度</strong>，这样这里的内容宽度就会自动去计算。offsetWidth 的宽度相当于 width 设定的宽度</p>
+<h5 id="margin-纵向重叠问题"><strong>margin 纵向重叠问题</strong></h5>
+<p>首先来开例题</p>
+<p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210809120347064.png" alt="image-20210809120347064"></p>
+<p>我们知道，<strong>相邻块级元素的 margin-top 和 margin-bottom 为发生重叠</strong>。空白内容的 p 元素也会重叠，这里进行了多层重叠，所以看上去这三个 p 元素被忽略了一样。这里要补充一下重叠的简单过程的通俗理解，两个外边距进行重叠，<strong>谁先触碰到对方外边距内边界谁就胜出</strong>，那么两个元素的距离就由谁说了算。所以答案是 15px</p>
+<h5 id="margin-负值问题"><strong>margin 负值问题</strong></h5>
+<p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210810110640470.png" alt="image-20210810110640470"></p>
+<h5 id="BFC-理解与应用"><strong>BFC 理解与应用</strong></h5>
+<ul>
+<li>
+<p>BFC 理解</p>
+<p>Block format context  块级格式化上下文</p>
+<p><strong>一块独立的渲染区域，内部元素的渲染不会影响边界以外的元素</strong></p>
+</li>
+<li>
+<p>形成 BFC 的常见条件</p>
+<p>float 不是 none</p>
+<p><strong>position 是 absolute 或 fixed</strong></p>
+<p><strong>overflow 不是 visible</strong></p>
+<p><strong>display 是 flex inline-block 等</strong></p>
+</li>
+<li>
+<p>BFC 常见应用</p>
+<p><strong>BFC 清除浮动</strong></p>
+<pre><code class="language-html">&lt;style&gt;
+    .BFC{
+        width: 100%;
+        background: #beace9;
+        overflow: hidden;   /* 触发元素 BFC */
+    }
+
+    .inner{
+        width: 100px;
+        height: 100px;
+        background: #e6e6a3;
+        float: left;
+    }
+&lt;/style&gt;
+&lt;div class="BFC"&gt;
+    这是 BFC 示例
+    &lt;div class="inner"&gt;我是浮动元素&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>看图例，这是没有触发 BFC 的时候</p>
+<p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210810113910661.png" alt="image-20210810113910661"></p>
+<p>浮动元素脱离文档流造成父元素高度塌陷，致使影响到外部元素。下面是使用 overflow: hidden 触发 BFC 的图例</p>
+<p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210810114047409.png" alt="image-20210810114047409"></p>
+<p>触发 BFC 后，父元素高度会被撑开，高度包含浮动元素的高度。<strong>因为根据 BFC 的基本布局规则，BFC 内部的子元素不会影响到外部元素，且 float 元素的高度算在 BFC 的高度内</strong></p>
+</li>
+</ul>
+<h5 id="float-布局"><strong>float 布局</strong></h5>
+<p>float 布局两个重要的知识点</p>
+<ul>
+<li>
+<p>如何实现<strong>圣杯布局和双飞翼布局</strong></p>
+<p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210810114635603.png" alt="image-20210810114635603"></p>
+<p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210810115039556.png" alt="image-20210810115039556"></p>
+<p>圣杯布局代码实现：</p>
+<pre><code class="language-html">&lt;style&gt;
+    body {
+        min-width: 550px;
+    }
+
+    #header {
+        text-align: center;
+        background-color: #f1f1f1;
+    }
+
+    .column {
+        float: left;
+    }
+
+    #container {
+        padding: 0 150px 0 200px;
+    }
+
+    #center {
+        background-color: #ccc;
+        width: 100%;
+    }
+
+    #left {
+        position: relative;
+        background-color: yellow;
+        width: 200px;
+        margin-left: -100%;
+        right: 200px;
+    }
+
+    #right {
+        background-color: red;
+        width: 150px;
+        margin-right: -150px;
+    }
+
+    #footer {
+        text-align: center;
+        background-color: #f1f1f1;
+    }
+
+    /* 手写 clearfix */
+    .clearfix::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;div id="header"&gt;this is header&lt;/div&gt;
+    &lt;div id="container" class="clearfix"&gt;
+        &lt;div id="center" class="column"&gt;this is center&lt;/div&gt;
+        &lt;div id="left" class="column"&gt;this is left&lt;/div&gt;
+        &lt;div id="right" class="column"&gt;this is right&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id="footer"&gt;this is footer&lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p><span class="github-emoji"><span>⭐</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 实现过程：</p>
+<ol>
+<li>html 部分主要是一个容器元素内有三个实现浮动的元素。两边要设置固定宽度，中间宽度为 100%</li>
+<li>容器元素设置其 padding 值，padding 值为两侧浮动元素的宽度</li>
+<li>左侧浮动元素设置其 margin-left 值，值为 -100%，也就是说向左偏移相当于容纳块的宽度。此时还没有到达它的真正位置。所以要使用 <code>position: relative</code> 相对于自身右侧偏移，偏移量为自身宽度</li>
+<li>右侧浮动元素设置其 margin-right 值，值为负的自身宽度，也就是从右侧向内收缩自身宽度的量，导致其宽度从布局上被忽略，故而向上浮动到中间浮动元素的右侧</li>
+</ol>
+<p>最终效果</p>
+<p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210811113924148.png" alt="image-20210811113924148"></p>
+<p>双飞翼布局代码实现：</p>
+<pre><code class="language-html">&lt;style&gt;
+    body {
+        min-width: 550px;
+    }
+
+    .col {
+        float: left;
+    }
+
+    #main {
+        background-color: #ccc;
+        width: 100%;
+        height: 200px;
+    }
+
+    #main &gt; #main-wrap {
+        margin: 0 190px;
+    }
+
+    #left {
+        background-color: #0000FF;
+        width: 190px;
+        height: 200px;
+        margin-left: -100%;
+    }
+
+    #right {
+        background-color: #FF0000;
+        width: 190px;
+        height: 200px;
+        margin-left: -190px;
+    }
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;div id="main" class="col"&gt;
+        &lt;div id="main-wrap"&gt;
+            this is main
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id="left" class="col"&gt;
+        this is left
+    &lt;/div&gt;
+    &lt;div id="right" class="col"&gt;
+        this is right
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p><span class="github-emoji"><span>⭐</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 实现过程：</p>
+<ol>
+<li>html 部分主要是实现浮动的三个元素（亦可包含在一个容器元素中），<strong>不过中间浮动元素的内容部分另外包装在一个元素中</strong></li>
+<li>给中间浮动元素中包装内容的元素设置左右 margin，值为两侧浮动元素的宽度</li>
+<li>左侧浮动元素设置 margin-left，值为 -100%。这里就不用设置 <code>position: relative</code> 了</li>
+<li>右侧浮动元素设置 margin-left（注意，不是 margin-right，因为容器元素并未 padding 或 margin，很可能导致右侧浮动元素超出页面部分），值为负的自身宽度</li>
+</ol>
+<p>最终效果：</p>
+<p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210811114812928.png" alt="image-20210811114812928"></p>
+</li>
+</ul>
+<h5 id="手写-clearfix">手写 <strong>clearfix</strong></h5>
+<p>代码演示：</p>
+<pre><code class="language-css">/* 手写 clearfix */
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+</code></pre>
+<p>为什么要使用 clearfix，我想这篇文章写的很好：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9d6a6fc3e398">https://www.jianshu.com/p/9d6a6fc3e398</a></p>
+<p>总而言之，相比使用 <code>clear: both</code> 来清除浮动，<strong>使用 clearfix 这种清除浮动的方法，可以同时撑开浮动元素容器的高度</strong>。添加伪元素 ::after 其实是在元素后面添加了一个元素，在这个伪元素上使用了 <code>clear: both</code> 使其清除两边浮动元素，故而使也能使容器高度撑开</p>
+<h5 id="flex-布局">flex 布局</h5>
+<ul>
+<li>
+<p>常用语法回顾</p>
+<ul>
+<li>flex-direction：主轴方向</li>
+<li>justify-content：弹性元素行中主轴对齐方式</li>
+<li>align-items：弹性元素行中垂轴对齐方式</li>
+<li>flex-wrap：是否允许换行</li>
+<li>align-self：弹性元素自身垂轴对齐方式</li>
+</ul>
+</li>
+<li>
+<p>用 flex 画一个三点色子</p>
+<p>代码演示</p>
+<pre><code class="language-html">&lt;style&gt;
+    /* flex 画三个点的色子 */
+    .box {
+        display: flex;  /* flex 布局 */
+        justify-content: space-between; /* 两端对齐 */
+        width: 500px;
+        height: 500px;
+        padding: 50px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+    }
+
+    /* 点的背景色、大小、边框等 */
+    .dot {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: #000;
+    }
+
+    /* 第二项居中对齐 */
+    .dot:nth-child(2) {
+        align-self: center;
+    }
+
+    /* 第三项尾对齐 */
+    .dot:nth-child(3) {
+        align-self: flex-end;
+    }
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;div class="box"&gt;
+        &lt;div class="dot"&gt;&lt;/div&gt;
+        &lt;div class="dot"&gt;&lt;/div&gt;
+        &lt;div class="dot"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>最终效果：</p>
+<img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210811122631350.png" alt="image-20210811122631350" style="zoom:50%;">
+</li>
+</ul>
+<h3 id="CSS-题目整理">CSS 题目整理</h3>
 <h4 id="第一题：CSS-伪类与伪元素的区别">第一题：CSS 伪类与伪元素的区别</h4>
 <ul>
 <li>
@@ -57,4 +320,151 @@
 <p><strong>利用 box-sizing 属性</strong>： content-box 为标准模型；border-box 为 IE 模型</p>
 </li>
 </ul>
-</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><em></em><a class="button is-default" href="/2021/07/28/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" title="我的第一篇博客"><span class="has-text-weight-semibold">Next: 我的第一篇博客</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Targzp/targzp.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Targzp"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Lawrence 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>
+<h4 id="第三题：-BFC-是什么？触发-BFC-的条件是什么？有哪些应用场景？">第三题： BFC 是什么？触发 BFC 的条件是什么？有哪些应用场景？</h4>
+<ul>
+<li>
+<p>概念</p>
+<p>BFC（Box Formatting context）：Box 是 CSS 布局的对象和基本单位。<strong>BFC 就是页面上的一个隔离的独立容器</strong>。<strong>容器里面的子元素不会影响到外面的元素。反之也如此</strong></p>
+<p>块级格式化上下文布局规则：</p>
+<ul>
+<li>内部的 BOX 会在垂直方向一个接一个的放置</li>
+<li>属于同一个 BFC 的两个相邻 Box 的 margin 会重叠；不同 BFC 就不会</li>
+<li>是页面上一个隔离的独立容器，里面的元素不会影响到外面的元素；反之亦然</li>
+<li>BFC 的区域不会和 float box 重叠</li>
+<li><strong>计算 BFC 的高度，浮动元素也参与计算</strong></li>
+</ul>
+</li>
+<li>
+<p>触发条件</p>
+<p>触发条件简要概括：</p>
+<ul>
+<li>根元素</li>
+<li>float 属性不为 none</li>
+<li>position 为 absolute 或 fixed</li>
+<li><strong>overflow 不为 visible</strong></li>
+<li>display 为 inline-block、table-cell、table-caption、flex、inline-flex</li>
+</ul>
+</li>
+<li>
+<p>应用场景</p>
+<ol>
+<li>
+<p>清除内部的浮动，触发父元素的 BFC 属性，会包含 float 元素</p>
+<p><strong>防止浮动导致父元素高度塌陷父级设置 overflow: hidden</strong>， 元素 float: left;</p>
+</li>
+<li>
+<p><strong>分属于不同的 BFC，可以阻止 Margin 重叠</strong></p>
+<p>避免 margin 重叠，两个块相邻就会导致外边距被折叠，给中间的设置 BFC 就会避免，方法就是套个父级设置 overflow: hidden</p>
+</li>
+<li>
+<p>阻止元素被浮动元素覆盖，各自是独立的渲染区域</p>
+</li>
+<li>
+<p>自适应两栏布局</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="第四题：说一下什么是重绘重排，哪些操作会造成重绘重排">第四题：说一下什么是重绘重排，哪些操作会造成重绘重排</h4>
+<ul>
+<li>
+<p>什么是重绘重排</p>
+<p>当我们改变了一个元素<strong>尺寸位置属性</strong>时，会重新进行样式计算、布局绘制以及后面的所有流程，这种行为称为 <strong>重排</strong></p>
+<p>当改变了某个元素的颜色属性是不会重新触发布局，但还是会<strong>触发样式计算和绘制</strong>这就是 <strong>重绘</strong></p>
+<p>我们可以发现<strong>重排和重绘都会占用主线程，还有 JS 也会运行在主线程</strong>，所以就会出现抢占执行时间的问题，如果你写了一个不断导致重排重绘的动画，浏览器则需要在每一帧都运行样式计算布局和绘制的操作</p>
+</li>
+<li>
+<p>触发的一些因素</p>
+<ul>
+<li>页面首次进入的渲染</li>
+<li>浏览器 resize</li>
+<li>元素位置和尺寸发生改变的时候</li>
+<li>可见元素的增删</li>
+<li>内容发生改变</li>
+<li>css 伪类激活</li>
+</ul>
+</li>
+<li>
+<p>如何优化</p>
+<p>CSS 中有个动画属性 transform，<strong>通过该属性实现的动画不会经过布局和绘制，而是直接运行在合成器线程和栅格线程</strong>，所以不会受到主线程中 js 执行的影响。更重要的是经过 transform 实现的动画由于不需要经过布局绘制样式计算等操作，所以节省了很多运算时间</p>
+</li>
+</ul>
+<h4 id="第五题：使用-CSS-实现一个水波纹的效果">第五题：使用 CSS 实现一个水波纹的效果</h4>
+<pre><code class="language-html">&lt;style&gt;
+    .wave-content {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        margin: 100px 0 0 100px;
+    }
+
+    .wave{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        opacity: 0;
+        transform-origin: center center;
+        border: 1px solid black;
+        border-radius: 50%;
+        animation-name: wave;
+        animation-duration: 7s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    .wave1 {
+        animation-delay: 0s;
+    }
+
+    .wave2 {
+        animation-delay: 1.5s;
+    }
+
+    .wave3 {
+        animation-delay: 3s;
+    }
+
+    .wave4 {
+        animation-delay: 4.5s;
+    }
+
+    @keyframes wave {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        30% {
+            opacity: 0.7;
+            transform: scale(0.65);
+        }
+        70% {
+            opacity: 0.1;
+            transform: scale(0.85);
+        }
+        100% {
+            opacity: -0.2;
+            transform: scale(1);
+        }
+    }
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;div class="wave-content "&gt;
+        &lt;div class="wave wave1 "&gt;&lt;/div&gt;
+        &lt;div class="wave wave2 "&gt;&lt;/div&gt;
+        &lt;div class="wave wave3 "&gt;&lt;/div&gt;
+        &lt;div class="wave wave4"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<h4 id="第六题：position-定位都有什么属性（不仅仅是绝对定位和相对定位-fix-定位）">第六题：position 定位都有什么属性（不仅仅是绝对定位和相对定位/ fix 定位）</h4>
+<ul>
+<li>
+<p>position 概念</p>
+<p><strong>position 属性把元素放置到一个静态的、相对的、绝对的、或固定的位置中</strong></p>
+</li>
+<li>
+<p>position 属性值</p>
+<p>position 属性值共有四个常用的：static、relative、absolute、fixed。还有不常用的：inherit、initial、sticky</p>
+</li>
+</ul>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2021/08/08/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E4%B9%8BHTML/" title="前端面试之HTML"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: 前端面试之HTML</span></a><a class="button is-default" href="/2021/07/28/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" title="我的第一篇博客"><span class="has-text-weight-semibold">Next: 我的第一篇博客</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Targzp/targzp.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Targzp"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Lawrence 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>
