@@ -15,7 +15,7 @@ CSS 知识点梳理
 
 我们把 box-sizing 的值设为 border-box，让 width 设定的宽度为 到边框外边界的 宽度，这样这里的内容宽度就会自动去计算。offsetW.."><meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Lawrence's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">前端面试之CSS</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86"><span class="toc-text">CSS 知识点梳理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E5%B8%83%E5%B1%80"><span class="toc-text">第一部分：布局</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%92%E6%A8%A1%E5%9E%8B%E5%AE%BD%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="toc-text">盒模型宽度计算</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#margin-%E7%BA%B5%E5%90%91%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98"><span class="toc-text">margin 纵向重叠问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#margin-%E8%B4%9F%E5%80%BC%E9%97%AE%E9%A2%98"><span class="toc-text">margin 负值问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#BFC-%E7%90%86%E8%A7%A3%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="toc-text">BFC 理解与应用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#float-%E5%B8%83%E5%B1%80"><span class="toc-text">float 布局</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%8B%E5%86%99-clearfix"><span class="toc-text">手写 clearfix</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#flex-%E5%B8%83%E5%B1%80"><span class="toc-text">flex 布局</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-%E9%A2%98%E7%9B%AE%E6%95%B4%E7%90%86"><span class="toc-text">CSS 题目整理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%9ACSS-%E4%BC%AA%E7%B1%BB%E4%B8%8E%E4%BC%AA%E5%85%83%E7%B4%A0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">第一题：CSS 伪类与伪元素的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%9A%E8%AF%B4%E4%B8%80%E4%B8%8B%E7%9B%92%E6%A8%A1%E5%9E%8B%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%A0%87%E5%87%86%E6%A8%A1%E5%9E%8B%E5%92%8C-IE-%E6%A8%A1%E5%9E%8B"><span class="toc-text">第二题：说一下盒模型，以及标准模型和 IE 模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%A2%98%EF%BC%9A-BFC-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E8%A7%A6%E5%8F%91-BFC-%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="toc-text">第三题： BFC 是什么？触发 BFC 的条件是什么？有哪些应用场景？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%A2%98%EF%BC%9A%E8%AF%B4%E4%B8%80%E4%B8%8B%E4%BB%80%E4%B9%88%E6%98%AF%E9%87%8D%E7%BB%98%E9%87%8D%E6%8E%92%EF%BC%8C%E5%93%AA%E4%BA%9B%E6%93%8D%E4%BD%9C%E4%BC%9A%E9%80%A0%E6%88%90%E9%87%8D%E7%BB%98%E9%87%8D%E6%8E%92"><span class="toc-text">第四题：说一下什么是重绘重排，哪些操作会造成重绘重排</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E9%A2%98%EF%BC%9A%E4%BD%BF%E7%94%A8-CSS-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%B0%B4%E6%B3%A2%E7%BA%B9%E7%9A%84%E6%95%88%E6%9E%9C"><span class="toc-text">第五题：使用 CSS 实现一个水波纹的效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E9%A2%98%EF%BC%9Aposition-%E5%AE%9A%E4%BD%8D%E9%83%BD%E6%9C%89%E4%BB%80%E4%B9%88%E5%B1%9E%E6%80%A7%EF%BC%88%E4%B8%8D%E4%BB%85%E4%BB%85%E6%98%AF%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E5%92%8C%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8D-fix-%E5%AE%9A%E4%BD%8D%EF%BC%89"><span class="toc-text">第六题：position 定位都有什么属性（不仅仅是绝对定位和相对定位&#x2F; fix 定位）</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%20CSS"><i class="tag post-item-tag">前端面试 CSS</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">前端面试之CSS</h1><time class="has-text-grey" datetime="2021-08-05T03:23:53.000Z">2021-08-05</time><article class="mt-2 post-content"><p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/css.jpg" alt="css"></p>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Lawrence's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">前端面试之CSS</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86"><span class="toc-text">CSS 知识点梳理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E5%B8%83%E5%B1%80"><span class="toc-text">第一部分：布局</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%92%E6%A8%A1%E5%9E%8B%E5%AE%BD%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="toc-text">盒模型宽度计算</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#margin-%E7%BA%B5%E5%90%91%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98"><span class="toc-text">margin 纵向重叠问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#margin-%E8%B4%9F%E5%80%BC%E9%97%AE%E9%A2%98"><span class="toc-text">margin 负值问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#BFC-%E7%90%86%E8%A7%A3%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="toc-text">BFC 理解与应用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#float-%E5%B8%83%E5%B1%80"><span class="toc-text">float 布局</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%8B%E5%86%99-clearfix"><span class="toc-text">手写 clearfix</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#flex-%E5%B8%83%E5%B1%80"><span class="toc-text">flex 布局</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E5%AE%9A%E4%BD%8D"><span class="toc-text">第二部分：定位</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#absolute-%E5%92%8C-relative-%E5%88%86%E5%88%AB%E4%BE%9D%E6%8D%AE%E4%BB%80%E4%B9%88%E5%AE%9A%E4%BD%8D"><span class="toc-text">absolute 和 relative 分别依据什么定位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B1%85%E4%B8%AD%E5%AF%B9%E9%BD%90%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-text">居中对齐有哪些实现方式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%EF%BC%9A%E5%93%8D%E5%BA%94%E5%BC%8F"><span class="toc-text">第四部分：响应式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-%E9%A2%98%E7%9B%AE%E6%95%B4%E7%90%86"><span class="toc-text">CSS 题目整理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%9ACSS-%E4%BC%AA%E7%B1%BB%E4%B8%8E%E4%BC%AA%E5%85%83%E7%B4%A0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">第一题：CSS 伪类与伪元素的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%9A%E8%AF%B4%E4%B8%80%E4%B8%8B%E7%9B%92%E6%A8%A1%E5%9E%8B%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%A0%87%E5%87%86%E6%A8%A1%E5%9E%8B%E5%92%8C-IE-%E6%A8%A1%E5%9E%8B"><span class="toc-text">第二题：说一下盒模型，以及标准模型和 IE 模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%A2%98%EF%BC%9A-BFC-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E8%A7%A6%E5%8F%91-BFC-%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="toc-text">第三题： BFC 是什么？触发 BFC 的条件是什么？有哪些应用场景？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%A2%98%EF%BC%9A%E8%AF%B4%E4%B8%80%E4%B8%8B%E4%BB%80%E4%B9%88%E6%98%AF%E9%87%8D%E7%BB%98%E9%87%8D%E6%8E%92%EF%BC%8C%E5%93%AA%E4%BA%9B%E6%93%8D%E4%BD%9C%E4%BC%9A%E9%80%A0%E6%88%90%E9%87%8D%E7%BB%98%E9%87%8D%E6%8E%92"><span class="toc-text">第四题：说一下什么是重绘重排，哪些操作会造成重绘重排</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E9%A2%98%EF%BC%9A%E4%BD%BF%E7%94%A8-CSS-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%B0%B4%E6%B3%A2%E7%BA%B9%E7%9A%84%E6%95%88%E6%9E%9C"><span class="toc-text">第五题：使用 CSS 实现一个水波纹的效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E9%A2%98%EF%BC%9Aposition-%E5%AE%9A%E4%BD%8D%E9%83%BD%E6%9C%89%E4%BB%80%E4%B9%88%E5%B1%9E%E6%80%A7%EF%BC%88%E4%B8%8D%E4%BB%85%E4%BB%85%E6%98%AF%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E5%92%8C%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8D-fix-%E5%AE%9A%E4%BD%8D%EF%BC%89"><span class="toc-text">第六题：position 定位都有什么属性（不仅仅是绝对定位和相对定位&#x2F; fix 定位）</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%20CSS"><i class="tag post-item-tag">前端面试 CSS</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">前端面试之CSS</h1><time class="has-text-grey" datetime="2021-08-05T03:23:53.000Z">2021-08-05</time><article class="mt-2 post-content"><p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/css.jpg" alt="css"></p>
 <blockquote>
 <p>前端面试系列主要是针对前端各个技术面试时常见的面试问题和知识点的整理。属于面试向的博文，所以较为零碎和不全面，请悉知</p>
 </blockquote>
@@ -280,6 +280,342 @@ CSS 知识点梳理
 </code></pre>
 <p>最终效果：</p>
 <img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210811122631350.png" alt="image-20210811122631350" style="zoom:50%;">
+</li>
+</ul>
+<h4 id="第二部分：定位">第二部分：定位</h4>
+<h5 id="absolute-和-relative-分别依据什么定位">absolute 和 relative 分别依据什么定位</h5>
+<ul>
+<li>
+<p>relative <strong>依据自身定位</strong></p>
+</li>
+<li>
+<p>absolute <strong>依据最近一层的定位元素定位</strong>。如果没有，那就相对于初始容纳块 body</p>
+<p>定位元素：absolute、relative、fixed</p>
+</li>
+</ul>
+<pre><code class="language-html">&lt;style&gt;
+    body{
+        margin: 20px;
+    }
+
+    .relative{
+        position: relative;
+        width: 400px;
+        height: 200px;
+        border: 1px solid #ccc;
+
+        top: 20px;
+        left: 20px;
+    }
+
+    .absolute{
+        position: absolute;
+        width: 200px;
+        height: 100px;
+        border: 1px solid blue;
+
+        top: 20px;
+        left: 20px;
+    }
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;p&gt;absolute 和 relative 定位问题&lt;/p&gt;
+    &lt;div class="relative"&gt;
+        &lt;div class="absolute"&gt;
+            this is absolute
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>此时 <code>position: absolute</code> 的元素相对于 <code>position: relative</code> 的元素进行定位。<code>position: relative</code> 的元素相对于自身进行定位。如若把 <code>position: relative</code> 这个属性删除，则内部 <code>position: absolute</code> 的元素相对于 body 元素进行定位</p>
+<p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210812111917855.png" alt="image-20210812111917855"></p>
+<h5 id="居中对齐有哪些实现方式">居中对齐有哪些实现方式</h5>
+<ul>
+<li>
+<p><strong>水平居中</strong></p>
+<ol>
+<li>
+<p>inline 元素：<code>text-align: center</code></p>
+<pre><code class="language-html">&lt;style&gt;
+    .container{
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .item{
+        background-color: #ccc;
+    }
+
+    .container-1{
+        text-align: center;	/* 设置行内元素水平居中 */
+    }
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;div class="container container-1"&gt;
+        &lt;span&gt;一段文字&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210812120752432.png" alt="image-20210812120752432"></p>
+</li>
+<li>
+<p>block 元素：<code>margin: auto</code></p>
+<pre><code class="language-html">&lt;style&gt;
+    .container{
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .item{
+        background-color: #ccc;
+    }
+
+    .container-2 .item{
+        width: 500px;
+        margin: auto;	/* 设置块级元素水平居中 */
+    }
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;div class="container container-1"&gt;
+        &lt;div class="item"&gt;
+            this is block item
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>margin-left 和 margin-right 设为 auto。<strong>左右两边外边距自动填充，前提时居中元素设置了宽度</strong>。</p>
+<p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210812121213588.png" alt="image-20210812121213588"></p>
+</li>
+<li>
+<p>absolute：<code>left: 50%</code> + <code>margin-left 负值</code></p>
+<pre><code class="language-html">&lt;style&gt;
+    .container{
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .item{
+        background-color: #ccc;
+    }
+
+    .container-3{
+        position: relative;
+        height: 100px;
+    }
+
+    .container-3 .item {
+        width: 300px;
+        height: 100px;
+        position: absolute;
+        left: 50%;
+        margin-left: -150px;
+    }
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;div class="container container-1"&gt;
+        &lt;div class="item"&gt;
+            this is block item
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>设定绝对定位的元素向左偏移 50%，<strong>其实是元素左上角相对于容纳块偏移 50%（也就是此时元素左上角在容纳块居中位置），并未在容纳块居中位置</strong>。所以要设置 <code>margin-left</code> 再向左偏移自身一半的距离，前提是知道子元素的宽度</p>
+<p><img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210812121815884.png" alt="image-20210812121815884"></p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>垂直居中</strong></p>
+<ol>
+<li>
+<p>inline 元素：line-height 的值等于 height 值</p>
+<pre><code class="language-html">&lt;style&gt;
+    .container {
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+        height: 200px;
+    }
+
+    .item {
+        background-color: #ccc;
+    }
+
+    .container-1 {
+        text-align: center;
+        line-height: 200px;	/* 让字距 加 上下两侧行高等于 height 值 */
+    }
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;div class="container container-1"&gt;
+        &lt;span&gt;一段文字&lt;/span&gt;
+    &lt;/div&gt;  
+&lt;/body&gt;
+</code></pre>
+<img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210813105644244.png" alt="image-20210813105644244" style="zoom:67%;">
+</li>
+<li>
+<p>absolute 元素：<code>top: 50%</code> + <code>margin-top 负值</code> （需要知道子元素的尺寸，因为需要直到子元素一半的高度或宽度）</p>
+<pre><code class="language-html">&lt;style&gt;
+    .container {
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+        height: 200px;
+    }
+
+    .item {
+        background-color: #ccc;
+    }
+    .container-2 {
+        position: relative;
+    }
+
+    .container-2 .item {
+        width: 300px;   /* 必须知道 item 的尺寸 */
+        height: 100px;
+        position: absolute;
+        left: 50%;		/* 水平居中 */
+        margin-left: -150px;	
+        top: 50%;		/* 垂直居中 */
+        margin-top: -50px;
+    }
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;div class="container container-2"&gt;
+        &lt;div class="item"&gt;
+            this is item
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210813105911853.png" alt="image-20210813105911853" style="zoom:67%;">
+</li>
+<li>
+<p>absolute 元素：<code>translate(-50%,-50%)</code></p>
+<pre><code class="language-html">&lt;style&gt;
+    .container {
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+        height: 200px;
+    }
+
+    .item {
+        background-color: #ccc;
+    }
+    .container-3 {
+        position: relative;
+    }
+
+    .container-3 .item {
+        width: 200px;
+        height: 80px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;div class="container container-3"&gt;
+        &lt;div class="item"&gt;
+            this is item
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>这种方法原理与设置 margin-left 和 margin-top 负值相同，但是重要的区别是，<strong>不必知道子元素自身的高度和宽度</strong>。因为 translate 相对于子元素自身范围框进行移动，且移动原点就在自身范围框中心</p>
+<img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210813110628693.png" alt="image-20210813110628693" style="zoom:67%;">
+</li>
+<li>
+<p>absolute 元素：<code>top left bottom right = 0</code> + <code>margin: auto</code></p>
+<pre><code class="language-html">&lt;style&gt;
+    .container {
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+        height: 200px;
+    }
+
+    .item {
+        background-color: #ccc;
+    }
+    .container-4 {
+        position: relative;
+    }
+
+    .container-4 .item {
+        width: 100px;
+        height: 50px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+    }
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;div class="container container-4"&gt;
+        &lt;div class="item"&gt;
+            this is item
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>这种方法利用了盒模型的概念基础，<strong>使用绝对定位的元素，其横向尺寸（即 left 、right 加上盒模型各属性）的值要等于容纳块的尺寸，纵向尺寸同理</strong>。这边几个定位属性都设为 0，margin 的值自动计算，左右外边距相等，上下外边距相等，最后就能达到垂直居中效果</p>
+<img src="http://targzp-picture.oss-cn-beijing.aliyuncs.com/img/image-20210813111136098.png" alt="image-20210813111136098" style="zoom:67%;">
+</li>
+</ol>
+</li>
+</ul>
+<p>####第三部分：图文样式</p>
+<ul>
+<li>
+<p>line-height 如何继承</p>
+<pre><code class="language-html">&lt;style&gt;
+    /* p 标签的行高将会是 40 px */
+    body{
+        font-size: 20px;
+        line-height: 200%;
+    }
+    
+    p{
+        font-size: 16px;
+    }
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;p&gt;
+        AAA
+    &lt;/p&gt;
+&lt;/body&gt;
+</code></pre>
+<p>为何是 40px。我们来分析以下：</p>
+<ul>
+<li>写具体数值，如 30px，则继承该值（比较好理解）</li>
+<li>写比例，如 2 / 1.5，则继承该比例（比较好理解）</li>
+<li>写百分比，如 200%，<strong>则继承计算出来的值</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="第四部分：响应式">第四部分：响应式</h4>
+<ul>
+<li>rem 是什么
+<ul>
+<li>px，绝对长度单位，最常用。但是不灵活</li>
+<li>em，相对长度单位，相对于父元素（字号）。没有统一标准，不常用</li>
+<li>rem，相对长度单位，<strong>相对于根元素</strong>（字号），常用于响应式布局</li>
+</ul>
+</li>
+<li>响应式布局的常见方案
+<ul>
+<li>media-query，根据不同的屏幕宽度设置根元素 font-size</li>
+<li>rem，基于根元素的相对单位</li>
+</ul>
 </li>
 </ul>
 <h3 id="CSS-题目整理">CSS 题目整理</h3>
